@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask API Test</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="sendButton">Send Data</button>
+    <div id="response"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#sendButton').click(function() {
+                const data = { key: 'value' };
+                const url = 'http://73.80.229.136:5000/api/data'; // For local testing, replace with your public IP for internet access
+
+                console.log('Sending data to:', url);
+                console.log('Data:', data);
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function(response) {
+                        console.log('Success:', response);
+                        $('#response').text(JSON.stringify(response));
+                    },
+                    error: function(error) {
+                        console.error('Error:', error);
+                        $('#response').text('Error: ' + JSON.stringify(error));
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
