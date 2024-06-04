@@ -1,15 +1,13 @@
+async function get_sheet(){
 
-async function test(){
-    const data = { key: 'value' };
-    const url = 'https://cryptic-headland-94862.herokuapp.com/http://127.0.0.1:5000/api/test'; // Replace with your public IP address
+    var getSheetURL = 'https://chase35x.pythonanywhere.com/make_sheet?param=AAPL'
 
-    console.log('Sending data to:', url);
-    console.log('Data:', data);
+    let response = await fetch(getSheetURL)
+        .then(data => {
+            return data;
+        })           //api for the get request
+    
+    
+    console.log(response)
 
-    let response = await fetch(url)
-    .then(data => {
-        return data;
-    })           
-
-    const user = await response.json() 
 }
